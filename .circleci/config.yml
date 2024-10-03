@@ -11,9 +11,9 @@ jobs:
       - run: apk add python2
       # - run: echo ${TAG}; if [ -z ${TAG+x} ]; then TAG=$CIRCLE_BRANCH; fi; if [ $TAG=="master" ]; then TAG="latest"; fi; echo export TAG=\"$TAG\" >> $BASH_ENV; source $BASH_ENV; echo $BASH_ENV
       - run: python process_build.py $TAG
-      # - run: source $BASH_ENV; docker build -t macadmins/sal-saml:$TAG .
-      # - run: docker login -u $DOCKER_USER -p $DOCKER_PASS
-      # - run: source $BASH_ENV; docker push macadmins/sal-saml:$TAG
+      - run: source $BASH_ENV; docker build -t tylerthepug/crypt-server-saml:$TAG .
+      - run: docker login -u $DOCKER_USER -p $DOCKER_PASS
+      - run: source $BASH_ENV; docker push tylerthepug/crypt-server-saml:$TAG
 
 workflows:
   version: 2
