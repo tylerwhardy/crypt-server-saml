@@ -16,7 +16,7 @@ if tag == "":
         tag = os.getenv("CIRCLE_BRANCH")
 
 print(tag)
-dockerfile_content = """FROM macadmins/crypt-server:{}
+dockerfile_content = """FROM tylerthepug/crypt-server:{}
 
 RUN apk add --no-cache --virtual .build-deps \
     xmlsec-dev xmlsec git gcc libc-dev libpq \
@@ -37,7 +37,7 @@ COPY signals.py /home/app/crypt/server/signals.py
 with open("Dockerfile", "w") as dockerfile:
     dockerfile.write(dockerfile_content)
 
-cmd = ["docker", "build", "-t", "macadmins/crypt-server-saml:{}".format(tag), "."]
+cmd = ["docker", "build", "-t", "tylerthepug/crypt-server-saml:{}".format(tag), "."]
 
 print(subprocess.check_output(cmd))
 
@@ -55,6 +55,6 @@ try:
 except subprocess.CalledProcessError:
     print("Failed to login to docker")
 
-cmd = ["docker", "push", "macadmins/crypt-server-saml:{}".format(tag)]
+cmd = ["docker", "push", "tylerthepug/crypt-server-saml:{}".format(tag)]
 
 print(subprocess.check_output(cmd))
