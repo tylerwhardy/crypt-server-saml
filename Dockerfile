@@ -1,4 +1,4 @@
-FROM macadmins/crypt-server:latest
+FROM tylerthepug/crypt-server:latest
 
 RUN apk add --no-cache --virtual .build-deps \
     xmlsec-dev xmlsec git gcc libc-dev libpq \
