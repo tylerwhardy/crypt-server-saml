@@ -42,7 +42,7 @@ cmd = ["docker", "build", "-t", "tylerthepug/crypt-server-saml:{}".format(tag), 
 try:
     print(subprocess.check_output(cmd))
 except subprocess.CalledProcessError as e:
-    print(f"Failed to build Docker image: {e.output}")
+    print("Failed to build Docker image: ", e.output.decode('utf-8'))
     exit(1)
 
 cmd = [
