@@ -39,7 +39,11 @@ with open("Dockerfile", "w") as dockerfile:
 
 cmd = ["docker", "build", "-t", "tylerthepug/crypt-server-saml:{}".format(tag), "."]
 
-print(subprocess.check_output(cmd))
+try:
+    print(subprocess.check_output(cmd))
+except subprocess.CalledProcessError as e:
+    print(f"Failed to build Docker image: {e.output}")
+    exit(1)
 
 cmd = [
     "docker",
